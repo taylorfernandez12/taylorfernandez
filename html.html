@@ -1,1 +1,197 @@
-<h1>heslou</h1>
+<h1>heslou</h1><!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DeporteTotal - Información deportiva</title>
+  <meta name="description" content="Resultados, noticias y estadísticas de fútbol, baloncesto, béisbol y más.">
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header>
+    <h1>DeporteTotal</h1>
+    <p>Tu web de información deportiva: resultados, noticias y estadísticas en un solo lugar.</p>
+  </header>
+
+  <!-- Navegación -->
+  <nav>
+    <a href="#inicio">Inicio</a> |
+    <a href="#noticias">Noticias</a> |
+    <a href="#resultados">Resultados</a> |
+    <a href="#estadisticas">Estadísticas</a> |
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <hr/>
+
+  <!-- Inicio -->
+  <section id="inicio">
+    <h2>Bienvenido</h2>
+    <p>Explora las principales ligas y disciplinas: fútbol, baloncesto, béisbol, tenis y más. Actualizamos resultados y noticias para que no te pierdas nada.</p>
+    <form id="buscador">
+      <label for="q"><strong>Buscar:</strong></label>
+      <input type="text" id="q" name="q" placeholder="Ej: Liga Dominicana, NBA, LIDOM"/>
+      <button type="submit">Buscar</button>
+    </form>
+    <div id="resultado-busqueda" aria-live="polite"></div>
+  </section>
+
+  <hr/>
+
+  <!-- Noticias -->
+  <section id="noticias">
+    <h2>Noticias destacadas</h2>
+    <article>
+      <h3>Fútbol: el clásico se decide en los últimos minutos</h3>
+      <p>Un gol en el tiempo añadido marcó la diferencia en un partido intenso y con oportunidades para ambos equipos.</p>
+      <small>Publicado hoy</small>
+    </article>
+    <article>
+      <h3>Baloncesto: récord de triples en la jornada</h3>
+      <p>La estrella del equipo consiguió un nuevo registro histórico con 12 triples anotados.</p>
+      <small>Publicado hoy</small>
+    </article>
+  </section>
+
+  <hr/>
+
+  <!-- Resultados -->
+  <section id="resultados">
+    <h2>Resultados recientes</h2>
+    <h3>Fútbol</h3>
+    <table border="1" cellpadding="6">
+      <thead>
+        <tr>
+          <th>Competición</th>
+          <th>Local</th>
+          <th>Visitante</th>
+          <th>Marcador</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LIDOM Fútbol</td>
+          <td>Club A</td>
+          <td>Club B</td>
+          <td>2 - 1</td>
+          <td>14/11/2025</td>
+        </tr>
+        <tr>
+          <td>Liga Europa</td>
+          <td>Equipo C</td>
+          <td>Equipo D</td>
+          <td>0 - 0</td>
+          <td>13/11/2025</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Baloncesto</h3>
+    <ul>
+      <li><strong>NBA:</strong> City Hawks 104 - 101 Ocean Waves (14/11/2025)</li>
+      <li><strong>ACB:</strong> Valencia 88 - 76 Bilbao (13/11/2025)</li>
+    </ul>
+  </section>
+
+  <hr/>
+
+  <!-- Estadísticas -->
+  <section id="estadisticas">
+    <h2>Estadísticas rápidas</h2>
+    <ul>
+      <li><strong>Máximo goleador (fútbol):</strong> Juan Pérez — 12 goles</li>
+      <li><strong>Máximo anotador (baloncesto):</strong> Luis Gómez — 32 puntos por partido</li>
+      <li><strong>Efectividad de pitcheo (béisbol):</strong> ERA 2.45</li>
+    </ul>
+
+    <details>
+      <summary>Ver detalle por liga</summary>
+      <h4>Fútbol</h4>
+      <ol>
+        <li><strong>Posesión media:</strong> 55%</li>
+        <li><strong>Tiros a puerta:</strong> 6.2 por partido</li>
+      </ol>
+      <h4>Baloncesto</h4>
+      <ol>
+        <li><strong>Triples intentados:</strong> 34 por juego</li>
+        <li><strong>Porcentaje de tiro:</strong> 46%</li>
+      </ol>
+    </details>
+  </section>
+
+  <hr/>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Tienes sugerencias o quieres colaborar? Envíanos un mensaje.</p>
+    <form id="form-contacto">
+      <div>
+        <label for="nombre"><strong>Nombre:</strong></label>
+        <input type="text" id="nombre" name="nombre" required/>
+      </div>
+      <div>
+        <label for="email"><strong>Email:</strong></label>
+        <input type="email" id="email" name="email" required/>
+      </div>
+      <div>
+        <label for="mensaje"><strong>Mensaje:</strong></label>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+      </div>
+      <button type="submit">Enviar</button>
+      <div id="estado-envio" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <hr/>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025 DeporteTotal. Información deportiva para todos.</p>
+  </footer>
+
+  <!-- Funcionalidad sin CSS: Búsqueda básica y validación simple -->
+  <script>
+    // Búsqueda simple en titulares de noticias
+    const buscador = document.getElementById('buscador');
+    const resultado = document.getElementById('resultado-busqueda');
+
+    buscador.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const term = document.getElementById('q').value.trim().toLowerCase();
+      const articulos = Array.from(document.querySelectorAll('#noticias article h3'));
+      if (!term) {
+        resultado.textContent = 'Escribe un término de búsqueda.';
+        return;
+      }
+      const matches = articulos.filter(h3 => h3.textContent.toLowerCase().includes(term));
+      if (matches.length === 0) {
+        resultado.textContent = 'Sin resultados.';
+      } else {
+        resultado.innerHTML = 'Coincidencias:<br>' + matches.map(m => '- ' + m.textContent).join('<br>');
+      }
+    });
+
+    // Manejo de envío de contacto (demo)
+    const form = document.getElementById('form-contacto');
+    const estado = document.getElementById('estado-envio');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+
+      if (!nombre || !email || !mensaje) {
+        estado.textContent = 'Por favor, completa todos los campos.';
+        return;
+      }
+      // Simula envío
+      estado.textContent = 'Enviado. ¡Gracias por tu mensaje, ' + nombre + '!';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
